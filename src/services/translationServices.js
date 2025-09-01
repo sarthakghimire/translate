@@ -8,7 +8,7 @@ export async function translateText(text, targetLanguage) {
   }
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const prompt = `Translate the following text to ${targetLanguage}: "${text}"`;
+    const prompt = `Translate the following text to ${targetLanguage}: "${text}", No description, just exact translation...If you don't find language code, assume something (Like ne must be Nepali...)`;
     const result = await model.generateContent(prompt);
     const translation = await result.response.text();
     return translation.trim();
